@@ -6,9 +6,9 @@ import com.szymik.core.model.StatusEntity
 import scala.concurrent.ExecutionContext
 
 /**
- * Simple endpoint returning just ping indicating that microservice is alive.
- *
- */
+  * Simple endpoint returning just ping indicating that microservice is alive.
+  *
+  */
 class StatusEndpoint(implicit executionContext: ExecutionContext) extends BaseEndpoint with SLF4JLogging {
 
   val route =

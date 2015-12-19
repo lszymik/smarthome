@@ -1,0 +1,6 @@
+applications:
+- name: ls-smarthome
+  memory: 512M
+  instances: 1
+  path: target/universal/smarthome-0.0.development.zip
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
