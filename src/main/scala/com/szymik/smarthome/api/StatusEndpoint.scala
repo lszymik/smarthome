@@ -1,7 +1,7 @@
-package com.szymik.api
+package com.szymik.smarthome.api
 
 import akka.event.slf4j.SLF4JLogging
-import com.szymik.core.model.StatusEntity
+import com.szymik.smarthome.core.model.StatusEntity
 
 import scala.concurrent.ExecutionContext
 

@@ -1,4 +1,4 @@
-package com.szymik.config
+package com.szymik.smarthome.config
 
 import com.typesafe.config.ConfigFactory
 

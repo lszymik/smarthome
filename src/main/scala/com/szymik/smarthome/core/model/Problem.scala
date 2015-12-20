@@ -1,4 +1,4 @@
-package com.szymik.core.model
+package com.szymik.smarthome.core.model
 
 /**
  * Parent class for all failed request results.

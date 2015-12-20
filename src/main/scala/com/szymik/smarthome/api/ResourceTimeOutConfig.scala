@@ -1,4 +1,4 @@
-package com.szymik.api
+package com.szymik.smarthome.api
 
 import akka.util.Timeout
 

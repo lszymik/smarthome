@@ -1,9 +1,9 @@
-package com.szymik.api
+package com.szymik.smarthome.api
 
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 import akka.http.scaladsl.marshalling._
 import akka.http.scaladsl.model._
-import com.szymik.core.model._
+import com.szymik.smarthome.core.model._
 import spray.json._
 
 object SmartHomeJsonProtocol {

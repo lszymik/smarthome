@@ -8,3 +8,4 @@ build
 *.iml
 api-designer-jetty-console.war
 target/
+config.txt

@@ -1,11 +1,11 @@
-package com.szymik.core
+package com.szymik.smarthome.core
 
 import akka.actor.{ActorRefFactory, ActorSystem}
 import akka.http.scaladsl.Http
 import akka.stream.ActorMaterializer
 import com.softwaremill.macwire.tagging.Tagger
-import com.szymik.api.Api
-import com.szymik.config.MainConfig
+import com.szymik.smarthome.api.Api
+import com.szymik.smarthome.config.MainConfig
 import com.typesafe.scalalogging.LazyLogging
 
 import scala.util.{Failure, Success}
@@ -59,5 +59,6 @@ trait BootedCore extends Core with Api with MainConfig {
  */
 trait CoreActors extends LazyLogging {
   this: Core with MainConfig =>
+
 
 }

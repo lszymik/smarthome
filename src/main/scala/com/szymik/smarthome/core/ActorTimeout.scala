@@ -1,4 +1,4 @@
-package com.szymik.core
+package com.szymik.smarthome.core
 
 import akka.util.Timeout
 
@@ -9,5 +9,5 @@ trait ActorTimeout {
 
   import scala.concurrent.duration._
 
-  implicit def timeout: Timeout = 10.second
+  implicit def timeout: Timeout = 1.second
 }

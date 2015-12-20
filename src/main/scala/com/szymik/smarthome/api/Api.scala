@@ -1,8 +1,9 @@
-package com.szymik.api
+package com.szymik.smarthome.api
 
+import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.directives.Credentials
-import com.szymik.config.MainConfig
-import com.szymik.core.{Core, CoreActors}
+import com.szymik.smarthome.config.MainConfig
+import com.szymik.smarthome.core.{Core, CoreActors}
 
 /**
  * The REST API layer. It exposes the REST services, but does not provide any web server interface.
@@ -14,13 +15,10 @@ trait Api extends CoreActors with Core with MainConfig {
 
   implicit lazy val context = system.dispatcher
 
-  lazy val routes = new StatusEndpoint().route
-
-  //    authenticateBasic(realm = "secure endpoint", secureMediaUserPassAuthenticator) { _ =>
-  //      new PublicFileEndpoint(publicFileManagerActor).route ~
-  //        new PrivateFileEndpoint(privateFileManagerActor).route
-  //    }
-
+  lazy val routes =
+    authenticateBasic(realm = "secure endpoint", secureMediaUserPassAuthenticator) { _ =>
+      new StatusEndpoint().route
+    }
 
   def secureMediaUserPassAuthenticator(credentials: Credentials): Option[String] =
     credentials match {
