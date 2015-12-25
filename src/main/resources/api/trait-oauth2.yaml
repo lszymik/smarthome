@@ -1,0 +1,38 @@
+oauth2:
+  usage: Apply this trait to support OAuth 2.0 authentication.
+  description: |
+    Supports OAuth 2.0 for authenticating all API requests.
+  headers:
+    Authorization :
+      description: |
+        Used to send a valid OAuth2 access token.
+      type: string
+      required: true
+      example: Bearer access_token
+  responses:
+    401:
+      description: |
+        Given request is unauthorized. Bad or expired token. Reauthenticate
+        the user. Any details will be provided within the response payload.
+      body:
+        application/json:
+          schema: !include https://api.yaas.io/patterns/v1/schema-error-message.json
+          example: |
+            {
+              "status":401,
+              "message":"Authorization: Unauthorized. Bearer TOKEN is invalid",
+              "type":"insufficient_credentials",
+              "moreInfo":"https://api.yaas.io/patterns/errortypes.html"
+            }
+    403:
+      description: |
+        Evaluated request scopes in access token are not sufficient and do not match required scopes.
+      body:
+        application/json:
+          schema: !include https://api.yaas.io/patterns/v1/schema-error-message.json
+          example: |
+            {
+              "status": 403,
+              "message": "Given request does not have required scopes in access token. It is not authorized to perform this operation.",
+              "type": "insufficient_permissions"
+            }

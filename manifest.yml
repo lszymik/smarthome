@@ -4,3 +4,5 @@ applications:
   instances: 1
   path: target/universal/smarthome-0.0.development.zip
   buildpack: https://github.com/cloudfoundry/java-buildpack.git
+  env:
+    basic.authorization.password: admin

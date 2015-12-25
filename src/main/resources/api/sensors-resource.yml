@@ -1,0 +1,78 @@
+# /home/{homeId}:
+is: [oauth2]
+/sensors/{sensorId}/temperature:
+  post:
+    is: [oauth2]
+    description: |
+      Provide new temperature value for the given sensor.
+    body:
+      application/json:
+        example: |
+          {
+            "value": 36.6
+          }
+    responses:
+      201:
+        description: |
+          The request succeeded and a new temperature record has been created.
+        body:
+          application/json:
+            example: |
+              {
+                "id": "5367728b18aef6ef24a04e38",
+                "message" : "Temperature value for sensor has been recorded."
+              }
+  get:
+    is: [oauth2]
+    description: |
+      Returns temperature values stored for the given sensor
+    queryParameters:
+      from:
+        type:
+          string
+        required: false
+      to:
+        type:
+          string
+        required: false
+      size:
+        type:
+          integer
+        required: false
+    responses:
+      200:
+        description: |
+          Return array with temperature values.
+        body:
+          application/json:
+            example: |
+              [
+                {
+                  "id": "5367728b18aef6ef24a04e38",
+                  "date" : "Sun, 06 Nov 1994 08:49:37 GMT"
+                  "value" : 19
+                },
+                {
+                  "id": "5367728b18aef6ef24a04e12",
+                  "date" : "Sun, 06 Nov 1994 08:44:37 GMT"
+                  "value" : 21
+                }
+              ]
+  /latest:
+    get:
+      is: [oauth2]
+      description: |
+        Returns the last temperature value stored for that sensor.
+      responses:
+        200:
+          description: |
+            Return last meassured value for the temperature.
+          body:
+            application/json:
+              example: |
+                {
+                  "id": "5367728b18aef6ef24a04e38",
+                  "date" : "Sun, 06 Nov 1994 08:49:37 GMT"
+                  "value" : 19
+                }
+       

@@ -2,6 +2,25 @@
 ---
 title: Smart Home
 version: v0.1
-baseUri: http://example.com
+baseUri: https://ls-smarthome.cfapps.io
 mediaType: application/json
 
+traits:
+  - !include trait-oauth2.yaml
+
+/status:
+  get:
+    is: [oauth2]
+    description: |
+      Returns information that service is alive.
+    responses:
+      200:
+        description: |
+          Return last meassured value for the temperature.
+        body:
+          application/json:
+            example: |
+              {
+                "status": "ok"
+              }
+/home/{homeId}: !include sensors-resource.yml
