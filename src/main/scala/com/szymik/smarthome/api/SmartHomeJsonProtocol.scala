@@ -48,6 +48,8 @@ trait SmartHomeJsonProtocol extends SprayJsonSupport with DefaultJsonProtocol {
 
   implicit val statusFormat = jsonFormat1(StatusEntity)
 
+  implicit val temperatureRecorded = jsonFormat1(TemperatureRecorded)
+
   implicit val uriJsonFormat = new JsonFormat[Uri] {
 
     override def write(uri: Uri): JsValue = JsString(uri.toString)
@@ -57,14 +59,6 @@ trait SmartHomeJsonProtocol extends SprayJsonSupport with DefaultJsonProtocol {
       case _ => throw new DeserializationException("Deserialization failed")
     }
   }
-
-  implicit val deleteMarshaller: ToResponseMarshaller[FileDeleted.type] =
-    Marshaller.withFixedCharset(MediaTypes.`application/json`, HttpCharsets.`UTF-8`) { deleted =>
-      HttpResponse(
-        status = StatusCodes.NoContent,
-        entity = HttpEntity.empty(ContentTypes.`application/json`)
-      )
-    }
 
   implicit val problemMarshaller: ToResponseMarshaller[Problem] = Marshaller.combined {
 

@@ -12,7 +12,8 @@ resolvers += "spray repo" at "http://repo.spray.io"
 
 
 libraryDependencies ++= {
-  val akkaVersion = "2.4.0"
+  val akkaVersion = "2.4.1"
+  val akkaHttpVersion = "2.0.1"
   val macwireVersion = "2.1.0"
   val hystrixVersion = "1.4.21"
 
@@ -24,8 +25,8 @@ libraryDependencies ++= {
       exclude("org.slf4j", "slf4j-api")
       exclude("org.scala-lang", "scala-library"),
 
-    "com.typesafe.akka" %% "akka-http-experimental" % "2.0-M1",
-    "com.typesafe.akka" %% "akka-http-spray-json-experimental" % "2.0-M1",
+    "com.typesafe.akka" %% "akka-http-experimental" % akkaHttpVersion,
+    "com.typesafe.akka" %% "akka-http-spray-json-experimental" % akkaHttpVersion,
 
     // mongo
     "org.mongodb" % "mongodb-driver-reactivestreams" % "1.1.0",

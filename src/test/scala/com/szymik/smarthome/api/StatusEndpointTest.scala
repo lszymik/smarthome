@@ -2,7 +2,7 @@ package com.szymik.smarthome.api
 
 import akka.http.scaladsl.model.StatusCodes
 
-class StatusEndpointTest extends BaseResourceTest {
+class StatusEndpointTest extends BaseEndpointTest {
 
   "StatusEndpoint" should {
 

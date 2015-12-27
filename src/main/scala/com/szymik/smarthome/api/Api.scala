@@ -17,7 +17,8 @@ trait Api extends CoreActors with Core with MainConfig {
 
   lazy val routes =
     authenticateBasic(realm = "secure endpoint", secureMediaUserPassAuthenticator) { _ =>
-      new StatusEndpoint().route
+      new StatusEndpoint().route ~
+        new TemperatureEndpoint(temperatureActor).route
     }
 
   def secureMediaUserPassAuthenticator(credentials: Credentials): Option[String] =

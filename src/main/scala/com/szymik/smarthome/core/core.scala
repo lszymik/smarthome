@@ -60,5 +60,6 @@ trait BootedCore extends Core with Api with MainConfig {
 trait CoreActors extends LazyLogging {
   this: Core with MainConfig =>
 
+  lazy val temperatureActor = system.actorOf(TemperatureActor.props()).taggedWith[TemperatureActorTag]
 
 }
